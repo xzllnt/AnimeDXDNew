@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutFragment">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="338dp"
+        android:layout_height="126dp"
+        android:src="@drawable/bg_rectangle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/greetingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/patrick_hand"
+        android:text="Welcome"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/patrick_hand"
+        android:text="About Us"
+        android:textColor="#ADC1C4"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="524dp"
+        android:layout_marginTop="144dp"
+        android:src="@drawable/bg_rectangle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="197dp"
+        android:layout_height="152dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="168dp"
+        android:fontFamily="@font/comic_neue"
+        android:text="AnimeDXD is a mobile app designed for anime fans to explore the latest news, a rich manga library, and a complete anime directory with genres and summaries.\n\nWith a user-friendly interface and smooth navigation, AnimeDXD is your go-to companion for enjoying anime anytime, anywhere.\n\nThank you for making us part of your anime journey!"
+        android:textColor="#2A6F7F"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="165dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/about"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--    FORM    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/formContainer"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_form_background"
+        android:padding="16dp"
+        android:elevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/desc"
+        app:layout_constraintStart_toStartOf="@id/desc"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp">
+
+        <TextView
+            android:id="@+id/formTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send a Message"
+            android:textColor="#2A6F7F"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/patrick_hand"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/nameInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:background="@null"
+            android:textColorHint="#A2313A3E"
+            android:fontFamily="@font/comic_neue"
+            android:textColor="#000000"
+            android:inputType="textPersonName"
+            android:paddingBottom="4dp"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/formTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:drawableBottom="@drawable/edittext_underline" />
+
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:background="@null"
+            android:textColorHint="#A2313A3E"
+            android:fontFamily="@font/comic_neue"
+            android:textColor="#000000"
+            android:inputType="textEmailAddress"
+            android:paddingBottom="4dp"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/nameInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:drawableBottom="@drawable/edittext_underline" />
+
+        <EditText
+            android:id="@+id/messageInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Messages"
+            android:background="@null"
+            android:textColorHint="#A2313A3E"
+            android:fontFamily="@font/comic_neue"
+            android:textColor="#000000"
+            android:minLines="1"
+            android:maxLines="2"
+            android:gravity="top|start"
+            android:inputType="textMultiLine"
+            android:scrollbars="vertical"
+            android:overScrollMode="always"
+            android:paddingBottom="4dp"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            android:drawableBottom="@drawable/edittext_underline"
+            app:layout_constraintTop_toBottomOf="@id/emailInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="85dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="#2A6F7F"
+            android:text="Submit"
+            android:textColor="#ffffff"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/messageInput" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="360dp"
+        android:layout_marginEnd="44dp"
+        android:fontFamily="@font/patrick_hand"
+        android:text="Get in touch"
+        android:textColor="#2A6F7C"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="48dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="428dp"
+        android:layout_marginEnd="132dp"
+        android:src="@drawable/call"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="48dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="396dp"
+        android:layout_marginEnd="132dp"
+        android:src="@drawable/instagram"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="48dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="460dp"
+        android:layout_marginEnd="132dp"
+        android:src="@drawable/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/comic_neue_bold"
+        android:text="\@animedxd"
+        android:textColor="#2A6F7F"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/comic_neue_bold"
+        android:text="anime_dxd@gmail.com"
+        android:textColor="#2A6F7F"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/comic_neue_bold"
+        android:text="+62 12345678910"
+        android:textColor="#2A6F7F"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="157dp"
+        android:layout_height="292dp"
+        android:layout_marginTop="304dp"
+        android:layout_marginEnd="104dp"
+        android:src="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="560dp"
+        android:fontFamily="@font/patrick_hand"
+        android:text="Our Team"
+        android:textColor="#2A6F7C"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/teamContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/textView10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/teamLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingBottom="16dp">
+
+            <!-- Eric -->
+            <LinearLayout
+                android:layout_width="79dp"
+                android:layout_height="110dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/member_bg"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="8dp"
+                >
+
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/eric" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comic_neue_bold"
+                    android:text="Eric Yonando"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <!-- Excellent -->
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:orientation="vertical"
+                android:background="@drawable/member_bg"
+                android:padding="8dp"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/excel"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Excellent Z D S"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/comic_neue_bold" />
+            </LinearLayout>
+
+            <!-- Shean -->
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:orientation="vertical"
+                android:background="@drawable/member_bg"
+                android:padding="8dp"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/shean" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shean Finnegan"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/comic_neue_bold" />
+            </LinearLayout>
+
+            <!-- Yehuda -->
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:orientation="vertical"
+                android:background="@drawable/member_bg"
+                android:padding="8dp"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/yuda" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yehuda"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/comic_neue_bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
