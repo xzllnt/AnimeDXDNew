@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="130dp">
+
+    <!-- ✅ Rectangle background -->
+
+
+    <!-- HOME icon -->
+    <View
+        android:id="@+id/navbarBackground"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/nav_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nav_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <!-- LIST icon -->
+    <FrameLayout
+        android:id="@+id/nav_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nav_about"
+        app:layout_constraintStart_toEndOf="@id/nav_home"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <!-- ABOUT icon -->
+    <FrameLayout
+        android:id="@+id/nav_about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+
+    <ImageView
+        android:id="@+id/navSelector"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="38dp"
+        android:layout_marginBottom="2dp"
+        android:src="@drawable/bg_circle_selected"
+        android:translationY="-20dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/homeIcon"
+        android:layout_width="88dp"
+        android:layout_height="81dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+
+        android:padding="12dp"
+        android:src="@drawable/house_34"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bookIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:padding="12dp"
+        android:src="@drawable/ic_book"
+        app:layout_constraintBottom_toBottomOf="@+id/navbarBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857" />
+
+    <ImageView
+        android:id="@+id/infoIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:padding="12dp"
+        android:src="@drawable/ic_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

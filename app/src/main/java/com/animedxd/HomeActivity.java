@@ -3,11 +3,12 @@ package com.animedxd;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.ViewGroup;
+
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,53 +16,53 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ConstraintLayout mainLayout;
+
+    private ImageView homeIcon;
+    private ImageView bookIcon;
+    private ImageView infoIcon;
+
+    private ImageView navSelector;
     private ImageButton menuButton;
     private ImageView closeDropdown;
     private ConstraintLayout dropdownMenu;
     private TextView logoutText;
-    private TextView greetingText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
 
-        // Window insets untuk edge-to-edge layout
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Inisialisasi komponen UI
         mainLayout = findViewById(R.id.main);
         menuButton = findViewById(R.id.menuButton);
         closeDropdown = findViewById(R.id.closeDropdown);
         dropdownMenu = findViewById(R.id.dropdownMenu);
         logoutText = findViewById(R.id.logoutText);
-        greetingText = findViewById(R.id.greetingText);
 
-        // Ambil username dari SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-        String username = sharedPreferences.getString("username", "User");
-        greetingText.setText("Welcome, " + username + "!");
+        navSelector = findViewById(R.id.navSelector);
 
-        // Tampilkan dropdown menu saat menuButton diklik
+
         menuButton.setOnClickListener(v -> {
             dropdownMenu.setVisibility(View.VISIBLE);
         });
 
-        // Sembunyikan dropdown saat tombol X ditekan
         closeDropdown.setOnClickListener(v -> {
             dropdownMenu.setVisibility(View.GONE);
         });
 
-        // Logout ke halaman login
         logoutText.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -69,7 +70,6 @@ public class HomeActivity extends AppCompatActivity {
             finish();
         });
 
-        // Sembunyikan dropdown saat area luar diklik
         mainLayout.setOnTouchListener((v, event) -> {
             if (dropdownMenu.getVisibility() == View.VISIBLE) {
                 dropdownMenu.setVisibility(View.GONE);
@@ -77,5 +77,124 @@ public class HomeActivity extends AppCompatActivity {
             }
             return false;
         });
+
+//        Navbar
+        homeIcon = findViewById(R.id.homeIcon);
+        bookIcon = findViewById(R.id.bookIcon);
+        infoIcon = findViewById(R.id.infoIcon);
+
+
+        homeIcon.setOnClickListener(v -> {
+            loadFragment(new HomeFragment());
+            setActiveNav("home");
+
+        });
+
+        bookIcon.setOnClickListener(v -> {
+            loadFragment(new ListFragment());
+            setActiveNav("book");
+
+        });
+
+        infoIcon.setOnClickListener(v -> {
+            loadFragment(new AboutFragment());
+            setActiveNav("info");
+
+        });
+
+        // Default aktif: Home
+        loadFragment(new HomeFragment());
+        setActiveNav("home");
+
     }
+
+    private void setActiveNav(String active) {
+        ImageView homeIcon = findViewById(R.id.homeIcon);
+        ImageView bookIcon = findViewById(R.id.bookIcon);
+        ImageView infoIcon = findViewById(R.id.infoIcon);
+
+        // Reset semua
+        homeIcon.setImageResource(R.drawable.nav_home_selector);
+        bookIcon.setImageResource(R.drawable.ic_book);
+        infoIcon.setImageResource(R.drawable.ic_info);
+        homeIcon.setBackground(null);
+        bookIcon.setBackground(null);
+        infoIcon.setBackground(null);
+
+        homeIcon.setTranslationY(80);
+        bookIcon.setTranslationY(0);
+        infoIcon.setTranslationY(0);
+
+        int activeSize = (int) (88 * getResources().getDisplayMetrics().density);
+        int notactiveSize = (int) (60 * getResources().getDisplayMetrics().density);
+
+        ViewGroup.LayoutParams homeParams = homeIcon.getLayoutParams();
+        ViewGroup.LayoutParams bookParams = bookIcon.getLayoutParams();
+        ViewGroup.LayoutParams infoParams = infoIcon.getLayoutParams();
+
+        homeParams.width = notactiveSize + 20;
+        homeParams.height = notactiveSize + 20;
+        bookParams.width = notactiveSize;
+        bookParams.height = notactiveSize;
+        infoParams.width = notactiveSize;
+        infoParams.height = notactiveSize;
+
+        switch (active) {
+            case "home":
+//                homeIcon.setBackgroundResource(R.drawable.bg_circle_selected);
+                homeIcon.setImageResource(R.drawable.ic_home);
+                homeIcon.animate()
+                        .translationY(-20)
+                        .setDuration(200)
+                        .start();
+                homeParams.width = activeSize;
+                homeParams.height = activeSize;
+                homeIcon.post(() -> moveSelectorTo(homeIcon));
+                break;
+            case "book":
+//                bookIcon.setBackgroundResource(R.drawable.bg_circle_selected);
+                bookIcon.setImageResource(R.drawable.book_active);
+                bookIcon.animate()
+                        .translationY(-40)
+                        .setDuration(200)
+                        .start();
+//                homeIcon.setTranslationX(-70);
+                bookParams.width = activeSize;
+                bookParams.height = activeSize;
+                bookIcon.post(() -> moveSelectorTo(bookIcon));
+                break;
+            case "info":
+//                infoIcon.setBackgroundResource(R.drawable.bg_circle_selected);
+                infoIcon.setImageResource(R.drawable.info_active);
+                infoIcon.animate()
+                        .translationY(-107)
+                        .setDuration(200)
+                        .start();
+//                homeIcon.setTranslationX(20);
+                infoParams.width = activeSize;
+                infoParams.height = activeSize;
+                infoIcon.post(() ->moveSelectorTo(infoIcon));
+                break;
+        }
+
+        homeIcon.setLayoutParams(homeParams);
+        bookIcon.setLayoutParams(bookParams);
+        infoIcon.setLayoutParams(infoParams);
+    }
+
+    private void loadFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                .replace(R.id.fragmentContainer, fragment)
+                .commit();
+    }
+
+    private void moveSelectorTo(View target) {
+        navSelector.animate()
+                .x(target.getX() + target.getWidth() / 2f - navSelector.getWidth() / 2f)
+                .setDuration(300)
+                .start();
+    }
+
 }
