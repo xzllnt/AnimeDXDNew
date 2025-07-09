@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/txtSynopsis"
+        android:layout_width="374dp"
+        android:layout_height="183dp"
+        android:layout_marginTop="144dp"
+        android:fontFamily="@font/patrick_hand"
+        android:justificationMode="inter_word"
+        android:text="Meskipun menjadi wadah bagi roh jahat, Yuuji masih bisa mengendalikan tubuhnya. Hal ini menarik perhatian para penyihir Jujutsu—kelompok khusus yang bertugas membasmi roh-roh kutukan. Di bawah bimbingan penyihir kuat Satoru Gojo, Yuuji diterima masuk ke SMA Jujutsu Tokyo, tempat para penyihir dilatih.
+
+
+
+Bersama teman-teman barunya, Fushiguro Megumi dan Kugisaki Nobara, Yuuji menghadapi berbagai misi berbahaya dan rahasia kelam dunia kutukan. Pertarungan antara manusia dan kutukan pun dimulai, mempertaruhkan nyawa dan prinsip kemanusiaan demi menjaga keseimbangan dunia."
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="21dp" />
+
+    <TextView
+        android:id="@+id/txtSynopsis"
+        android:layout_width="375dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/patrick_hand"
+        android:justificationMode="inter_word"
+        android:text="Yuuji Itadori adalah seorang siswa SMA yang hidupnya berubah drastis setelah menemukan sebuah benda kutukan—jari Sukuna Ryoumen, makhluk kutukan legendaris paling berbahaya. Demi menyelamatkan teman-temannya dari serangan kutukan, Yuuji nekat menelan jari tersebut dan menjadi inang Sukuna."
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="21dp" />
+
+    <TextView
+        android:id="@+id/txtSynopsis2"
+        android:layout_width="375dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="336dp"
+        android:fontFamily="@font/patrick_hand"
+        android:justificationMode="inter_word"
+        android:text="Bersama teman-teman barunya, Fushiguro Megumi dan Kugisaki Nobara, Yuuji menghadapi berbagai misi berbahaya dan rahasia kelam dunia kutukan. Pertarungan antara manusia dan kutukan pun dimulai, mempertaruhkan nyawa dan prinsip kemanusiaan demi menjaga keseimbangan dunia."
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
