@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         ReviewItem item = reviewList.get(position);
         holder.imgReviewer.setImageResource(item.getImageResId());
         holder.txtName.setText(item.getName());
-        holder.txtRating.setText(item.getRating() + " ★★★★★");
+        holder.ratingBar.setRating(item.getRating());
+        holder.txtRating.setText(item.getRating() + "");
         holder.txtReview.setText(item.getReviewText());
     }   
 
@@ -45,10 +47,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         ImageView imgReviewer;
         TextView txtName, txtRating, txtReview;
 
+        RatingBar ratingBar;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgReviewer = itemView.findViewById(R.id.imgReviewer);
             txtName = itemView.findViewById(R.id.txtName);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
             txtRating = itemView.findViewById(R.id.txtRating);
             txtReview = itemView.findViewById(R.id.txtReview);
         }

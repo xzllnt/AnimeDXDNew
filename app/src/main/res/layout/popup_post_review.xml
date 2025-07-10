@@ -1,63 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reviewOverlay"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@drawable/dialog_background">
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    > <!-- hitam 40% opacity (#66 = 40%) -->
 
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/anime_dxd_logo"
-        android:layout_gravity="center" />
-
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Kotak dialog di tengah -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dialogCard"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Rating"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp" />
+        app:cardCornerRadius="20dp"
+        android:background="@drawable/dialog_background"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="32dp">
 
-    <EditText
-        android:id="@+id/etRating"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Rate 1-5"
-        android:inputType="number"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#AAAAAA"
-        android:background="@drawable/rounded_edittext"
-        android:padding="10dp" />
+        <!-- Isi dialog -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="487dp"
+            android:background="#000000"
+            android:padding="24dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Review"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp" />
 
-    <EditText
-        android:id="@+id/etReview"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:hint="Write Your Review..."
-        android:gravity="top"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#AAAAAA"
-        android:background="@drawable/rounded_edittext"
-        android:padding="10dp" />
+            <!-- Tombol X -->
+            <ImageView
+                android:id="@+id/btnCloseDialog"
+                android:layout_width="42dp"
+                android:layout_height="41dp"
+                android:src="@drawable/ic_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnPostDialog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Post"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_button" />
-</LinearLayout>
+            <!-- Logo -->
+            <ImageView
+                android:id="@+id/logoImage"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:src="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Rating -->
+            <TextView
+                android:id="@+id/tvRatingLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/patrick_hand"
+                android:text="Rating"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logoImage" />
+
+            <EditText
+                android:id="@+id/etRating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Rate 1-5"
+                android:inputType="numberDecimal"
+                android:padding="10dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRatingLabel" />
+
+            <!-- Rating Error -->
+
+            <!-- Review Error -->
+
+            <!-- Review -->
+            <TextView
+                android:id="@+id/tvRatingError"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/patrick_hand"
+                android:text="Rating must be between 1 and 5"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="12sp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etRating" />
+
+            <EditText
+                android:id="@+id/etReview"
+                android:layout_width="294dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/rounded_edittext"
+                android:gravity="top"
+                android:hint="Write Your Review..."
+                android:padding="10dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.478"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvReviewLabel" />
+
+            <TextView
+                android:id="@+id/tvReviewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/patrick_hand"
+                android:text="Review"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etRating" />
+
+            <TextView
+                android:id="@+id/tvReviewError"
+                android:layout_width="105dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/patrick_hand"
+                android:text="Review cannot be null"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="12sp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etReview" />
+
+            <Button
+                android:id="@+id/btnPostDialog"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="52dp"
+                android:background="@drawable/rounded_button"
+                android:text="Post"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etReview" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

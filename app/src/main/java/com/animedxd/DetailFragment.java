@@ -1,7 +1,9 @@
 package com.animedxd;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -27,6 +29,8 @@ public class DetailFragment extends Fragment {
     public DetailFragment() {
         // Required empty public constructor
     }
+
+
 
     /**
      * Use this factory method to create a new instance of
