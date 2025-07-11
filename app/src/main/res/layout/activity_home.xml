@@ -90,6 +90,7 @@
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--    FRAGMENT    -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="423dp"
@@ -100,15 +101,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
     <!--  Navbar  -->
-
-
     <include
         layout="@layout/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/overlayView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#66000000"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

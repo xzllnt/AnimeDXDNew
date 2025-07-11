@@ -1,14 +1,14 @@
 package com.animedxd;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.ViewGroup;
-
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,10 +32,10 @@ public class HomeActivity extends AppCompatActivity {
     private ConstraintLayout dropdownMenu;
     private TextView logoutText;
 
+    private View overlayView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
@@ -53,15 +53,17 @@ public class HomeActivity extends AppCompatActivity {
         logoutText = findViewById(R.id.logoutText);
 
         navSelector = findViewById(R.id.navSelector);
-
+        overlayView = findViewById(R.id.overlayView);
 
         menuButton.setOnClickListener(v -> {
+            overlayView.setVisibility(View.VISIBLE);
             dropdownMenu.setVisibility(View.VISIBLE);
+            dropdownMenu.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_down));
         });
 
-        closeDropdown.setOnClickListener(v -> {
-            dropdownMenu.setVisibility(View.GONE);
-        });
+        closeDropdown.setOnClickListener(v -> closeDropdownWithAnimation());
+
+        overlayView.setOnClickListener(v -> closeDropdownWithAnimation());
 
         logoutText.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
@@ -72,40 +74,51 @@ public class HomeActivity extends AppCompatActivity {
 
         mainLayout.setOnTouchListener((v, event) -> {
             if (dropdownMenu.getVisibility() == View.VISIBLE) {
-                dropdownMenu.setVisibility(View.GONE);
+                closeDropdownWithAnimation();
                 return true;
             }
             return false;
         });
 
-//        Navbar
         homeIcon = findViewById(R.id.homeIcon);
         bookIcon = findViewById(R.id.bookIcon);
         infoIcon = findViewById(R.id.infoIcon);
 
-
         homeIcon.setOnClickListener(v -> {
             loadFragment(new HomeFragment());
             setActiveNav("home");
-
         });
 
         bookIcon.setOnClickListener(v -> {
             loadFragment(new ListFragment());
             setActiveNav("book");
-
         });
 
         infoIcon.setOnClickListener(v -> {
             loadFragment(new AboutFragment());
             setActiveNav("info");
-
         });
 
-        // Default aktif: Home
         loadFragment(new HomeFragment());
         setActiveNav("home");
+    }
 
+    private void closeDropdownWithAnimation() {
+        Animation slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_up);
+        slideUp.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                dropdownMenu.setVisibility(View.GONE);
+                overlayView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+        dropdownMenu.startAnimation(slideUp);
     }
 
     private void setActiveNav(String active) {
@@ -113,7 +126,6 @@ public class HomeActivity extends AppCompatActivity {
         ImageView bookIcon = findViewById(R.id.bookIcon);
         ImageView infoIcon = findViewById(R.id.infoIcon);
 
-        // Reset semua
         homeIcon.setImageResource(R.drawable.nav_home_selector);
         bookIcon.setImageResource(R.drawable.ic_book);
         infoIcon.setImageResource(R.drawable.ic_info);
@@ -141,39 +153,25 @@ public class HomeActivity extends AppCompatActivity {
 
         switch (active) {
             case "home":
-//                homeIcon.setBackgroundResource(R.drawable.bg_circle_selected);
                 homeIcon.setImageResource(R.drawable.ic_home);
-                homeIcon.animate()
-                        .translationY(-20)
-                        .setDuration(200)
-                        .start();
+                homeIcon.animate().translationY(-20).setDuration(200).start();
                 homeParams.width = activeSize;
                 homeParams.height = activeSize;
                 homeIcon.post(() -> moveSelectorTo(homeIcon));
                 break;
             case "book":
-//                bookIcon.setBackgroundResource(R.drawable.bg_circle_selected);
                 bookIcon.setImageResource(R.drawable.book_active);
-                bookIcon.animate()
-                        .translationY(-40)
-                        .setDuration(200)
-                        .start();
-//                homeIcon.setTranslationX(-70);
+                bookIcon.animate().translationY(-40).setDuration(200).start();
                 bookParams.width = activeSize;
                 bookParams.height = activeSize;
                 bookIcon.post(() -> moveSelectorTo(bookIcon));
                 break;
             case "info":
-//                infoIcon.setBackgroundResource(R.drawable.bg_circle_selected);
                 infoIcon.setImageResource(R.drawable.info_active);
-                infoIcon.animate()
-                        .translationY(-107)
-                        .setDuration(200)
-                        .start();
-//                homeIcon.setTranslationX(20);
+                infoIcon.animate().translationY(-107).setDuration(200).start();
                 infoParams.width = activeSize;
                 infoParams.height = activeSize;
-                infoIcon.post(() ->moveSelectorTo(infoIcon));
+                infoIcon.post(() -> moveSelectorTo(infoIcon));
                 break;
         }
 
@@ -196,5 +194,4 @@ public class HomeActivity extends AppCompatActivity {
                 .setDuration(300)
                 .start();
     }
-
 }
