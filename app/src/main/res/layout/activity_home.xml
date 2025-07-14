@@ -91,6 +91,9 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    FRAGMENT    -->
+
+
+    <!--  Navbar  -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="423dp"
@@ -99,12 +102,9 @@
         android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <!--  Navbar  -->
     <include
         layout="@layout/bottom_nav"
         android:layout_width="match_parent"
