@@ -1,86 +1,201 @@
 package com.animedxd;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.HorizontalScrollView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HomeFragment extends Fragment {
+
+    private Button newsButton, mangaButton;
+    private FrameLayout tabContent;
+    private RecyclerView mangaRecyclerView;
+
+    private List<Integer> newsImages;
+    private List<MangaItem> mangaList;
+
+    private Handler sliderHandler = new Handler(Looper.getMainLooper());
+    private Runnable sliderRunnable;
+    private int currentPage = 0;
+
     private TextView greetingText;
+    private TextView mangaTrendingSection;
+    private HorizontalScrollView mangaScroll;
+    private View bannerControls;
+    private ViewPager2 bannerViewPager;
+    private ImageButton prevButton, nextButton;
 
+    private MangaAdapter mangaAdapter;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-
-
-    }
+    public HomeFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Gunakan view.findViewById, bukan langsung findViewById
         greetingText = view.findViewById(R.id.greetingText);
-
-        // Gunakan requireActivity().getSharedPreferences
-        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", getContext().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("username", "User");
-        greetingText.setText("Welcome, " + username );
+        greetingText.setText("Welcome, " + username);
+
+        newsButton = view.findViewById(R.id.newsButton1);
+        mangaButton = view.findViewById(R.id.mangaButton1);
+        tabContent = view.findViewById(R.id.tabContent1);
+
+        mangaTrendingSection = view.findViewById(R.id.mangaTrendingSection);
+        mangaScroll = view.findViewById(R.id.mangaScroll);
+        bannerControls = view.findViewById(R.id.bannerControls);
+        bannerViewPager = view.findViewById(R.id.bannerViewPager);
+        prevButton = view.findViewById(R.id.prevButton);
+        nextButton = view.findViewById(R.id.nextButton);
+
+        initNewsData();
+        initMangaData();
+
+        setupNewsTab();
+        setTabState(true);
+        showTrendingViews(true);
+
+        newsButton.setOnClickListener(v -> {
+            setupNewsTab();
+            setTabState(true);
+            showTrendingViews(true);
+        });
+
+        mangaButton.setOnClickListener(v -> {
+            setupMangaTab();
+            setTabState(false);
+            showTrendingViews(false);
+        });
+
+        setupBannerCarousel();
+    }
+
+    private void initNewsData() {
+        newsImages = new ArrayList<>();
+        newsImages.add(R.drawable.ss1);
+        newsImages.add(R.drawable.ss2);
+        newsImages.add(R.drawable.ss3);
+    }
+
+    private void initMangaData() {
+        mangaList = new ArrayList<>();
+        mangaList.add(new MangaItem(R.drawable.manga_onepiece, "One Piece", "Petualangan Luffy mencari harta karun legendaris One Piece."));
+        mangaList.add(new MangaItem(R.drawable.manga_jujutsu, "Jujutsu Kaisen", "Itadori Yuji bertarung melawan kutukan demi teman-temannya."));
+        mangaList.add(new MangaItem(R.drawable.manga_drstone, "Dr. Stone", "Senku bangkitkan dunia dengan ilmu sains."));
+        mangaList.add(new MangaItem(R.drawable.manga_bokunohero, "My Hero Academia", "Manusia bertahan hidup dari raksasa pemakan manusia."));
+        mangaList.add(new MangaItem(R.drawable.manga_blackclover, "Black Clover", "Asta dan Yuno berjuang menjadi Kaisar Sihir."));
+    }
+
+    private void setupNewsTab() {
+        tabContent.removeAllViews();
+        sliderHandler.removeCallbacks(sliderRunnable);
+
+//        LayoutInflater inflater = LayoutInflater.from(requireContext());
+//        View newsLayout = inflater.inflate(R.layout.item_news, tabContent, false);
+//
+//        ImageView bannerImage = newsLayout.findViewById(R.id.bannerImage);
+//        bannerImage.setImageResource(newsImages.get(0));
+//
+//        tabContent.addView(newsLayout);
+    }
+
+    private void setupMangaTab() {
+        tabContent.removeAllViews();
+        sliderHandler.removeCallbacks(sliderRunnable);
+
+        mangaRecyclerView = new RecyclerView(requireContext());
+        mangaRecyclerView.setLayoutParams(new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+
+        mangaRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        mangaAdapter = new MangaAdapter(mangaList);
+        mangaRecyclerView.setAdapter(mangaAdapter);
+
+        tabContent.addView(mangaRecyclerView);
+    }
+
+    private void setTabState(boolean isNewsSelected) {
+        if (isNewsSelected) {
+            newsButton.setBackgroundResource(R.drawable.bg_tab_selected_left);
+            mangaButton.setBackgroundResource(R.drawable.bg_tab_unselected_right);
+        } else {
+            newsButton.setBackgroundResource(R.drawable.bg_tab_unselected_left);
+            mangaButton.setBackgroundResource(R.drawable.bg_tab_selected_right);
+        }
+    }
+
+    private void showTrendingViews(boolean show) {
+        int visibility = show ? View.VISIBLE : View.GONE;
+
+        if (mangaTrendingSection != null)
+            mangaTrendingSection.setVisibility(visibility);
+        if (mangaScroll != null)
+            mangaScroll.setVisibility(visibility);
+        if (bannerControls != null)
+            bannerControls.setVisibility(visibility);
+        if (bannerViewPager != null)
+            bannerViewPager.setVisibility(visibility);
+    }
+
+    private void setupBannerCarousel() {
+        NewsAdapter newsAdapter = new NewsAdapter(newsImages);
+        bannerViewPager.setAdapter(newsAdapter);
+
+        prevButton.setOnClickListener(v -> {
+            int current = bannerViewPager.getCurrentItem();
+            int prev = current - 1 < 0 ? newsImages.size() - 1 : current - 1;
+            bannerViewPager.setCurrentItem(prev, true);
+        });
+
+        nextButton.setOnClickListener(v -> {
+            int current = bannerViewPager.getCurrentItem();
+            int next = (current + 1) % newsImages.size();
+            bannerViewPager.setCurrentItem(next, true);
+        });
+
+        sliderRunnable = new Runnable() {
+            @Override
+            public void run() {
+                int next = (bannerViewPager.getCurrentItem() + 1) % newsImages.size();
+                bannerViewPager.setCurrentItem(next, true);
+                sliderHandler.postDelayed(this, 3000);
+            }
+        };
+        sliderHandler.postDelayed(sliderRunnable, 3000);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        sliderHandler.removeCallbacks(sliderRunnable);
     }
 }
