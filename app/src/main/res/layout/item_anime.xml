@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="260dp"
-    android:layout_height="320dp"
+    android:layout_width="158dp"
+    android:layout_height="220dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="12dp"
     android:background="@drawable/rounded_card"
     android:elevation="4dp">
 
     <!-- Gambar background -->
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgAnimeitem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/poster_assassinationclassroom"
-        android:alpha="0.5"/>
+        android:alpha="0.5"
+        app:shapeAppearanceOverlay="@style/ImageRounded" />
 
     <!-- Judul anime di atas -->
     <TextView
@@ -21,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Assassination\nClassroom"
-        android:textSize="18sp"
+        android:textSize="11sp"
         android:textColor="#FFFFFF"
         android:textStyle="bold|italic"
         android:gravity="center"
@@ -38,14 +40,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="44dp"
-        android:text="Genre: Action, Comedy, School, Sci-fi"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="55dp"
         android:fontFamily="@font/patrick_hand"
         android:paddingStart="12dp"
-        android:paddingEnd="12dp" />
+        android:paddingEnd="15dp"
+        android:text="Genre: Action, Comedy, School, Sci-fi"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="bold" />
 
     <!-- Deskripsi (lebih bawah lagi) -->
     <TextView
@@ -53,14 +55,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="12dp"
-        android:text="Siswa ditugaskan membunuh guru alien sebelum ia hancurkan Bumi, sambil belajar arti kehidupan."
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="end"
         android:fontFamily="@font/patrick_hand"
         android:maxLines="3"
-        android:ellipsize="end"
         android:paddingStart="12dp"
-        android:paddingEnd="12dp" />
+        android:paddingEnd="12dp"
+        android:text="Siswa ditugaskan membunuh guru alien sebelum ia hancurkan Bumi, sambil belajar arti kehidupan."
+        android:textColor="#FFFFFF"
+        android:textSize="11sp" />
 
 </FrameLayout>

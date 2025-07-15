@@ -19,6 +19,7 @@
     <!-- Theme utama yang digunakan aplikasi -->
     <style name="Theme.AnimeDXD" parent="Base.Theme.AnimeDXD" />
 
+<style name="Theme.YourApp" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
     <!-- Custom Button Style (untuk <Button>) -->
     <style name="CustomButton" parent="Widget.AppCompat.Button">
         <item name="android:backgroundTint">@null</item>
