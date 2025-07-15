@@ -6,4 +6,6 @@
     </style>
 
     <style name="Theme.AnimeDXD" parent="Base.Theme.AnimeDXD" />
+    <style name="Theme.YourApp" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
+
 </resources>
