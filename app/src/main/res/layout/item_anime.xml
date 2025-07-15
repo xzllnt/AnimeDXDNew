@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="260dp"
+    android:layout_height="320dp"
+    android:layout_margin="12dp"
+    android:background="@drawable/rounded_card"
+    android:elevation="4dp">
+
+    <!-- Gambar background -->
+    <ImageView
+        android:id="@+id/imgAnimeitem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/poster_assassinationclassroom"
+        android:alpha="0.5"/>
+
+    <!-- Judul anime di atas -->
+    <TextView
+        android:id="@+id/txtTitleitem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Assassination\nClassroom"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold|italic"
+        android:gravity="center"
+        android:padding="12dp"
+        android:shadowColor="#80000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:fontFamily="@font/poppins_extrabolditalic" />
+
+    <!-- Genre (ditempatkan di bawah) -->
+    <TextView
+        android:id="@+id/txtGenreitem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="44dp"
+        android:text="Genre: Action, Comedy, School, Sci-fi"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/patrick_hand"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp" />
+
+    <!-- Deskripsi (lebih bawah lagi) -->
+    <TextView
+        android:id="@+id/txtDescitem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="12dp"
+        android:text="Siswa ditugaskan membunuh guru alien sebelum ia hancurkan Bumi, sambil belajar arti kehidupan."
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:fontFamily="@font/patrick_hand"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp" />
+
+</FrameLayout>
