@@ -1,11 +1,35 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme -->
     <style name="Base.Theme.AnimeDXD" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Hilangkan highlight / ripple ungu -->
+        <item name="colorControlHighlight">@android:color/transparent</item>
+
+        <!-- Buat tombol tanpa warna default Material -->
+        <item name="colorButtonNormal">@android:color/transparent</item>
+        <item name="android:colorButtonNormal">@android:color/transparent</item>
+
+        <!-- Gunakan button style kustom -->
+        <item name="android:buttonStyle">@style/CustomButton</item>
+        <item name="buttonStyle">@style/CustomButton</item>
+
+        <!-- Override MaterialButton style untuk hilangkan tint -->
+        <item name="materialButtonStyle">@style/NoTintMaterialButton</item>
     </style>
 
+    <!-- Theme utama yang digunakan aplikasi -->
     <style name="Theme.AnimeDXD" parent="Base.Theme.AnimeDXD" />
-    <style name="Theme.YourApp" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
 
+<style name="Theme.YourApp" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
+    <!-- Custom Button Style (untuk <Button>) -->
+    <style name="CustomButton" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <!-- Custom MaterialButton Style (jika pakai <MaterialButton>) -->
+    <style name="NoTintMaterialButton" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="background">@null</item>
+    </style>
 </resources>

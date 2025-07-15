@@ -10,6 +10,11 @@
 
 
     <!-- Logo -->
+
+    <!-- Menu Button -->
+
+
+    <!-- Dropdown Panel -->
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="167dp"
@@ -19,21 +24,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <!-- Menu Button -->
-    <ImageButton
-        android:id="@+id/menuButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="16dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="Menu"
-        android:padding="8dp"
-        android:src="@drawable/ic_menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!-- Dropdown Panel -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dropdownMenu"
         android:layout_width="140dp"
@@ -121,6 +111,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/menuButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Menu"
+        android:padding="8dp"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
