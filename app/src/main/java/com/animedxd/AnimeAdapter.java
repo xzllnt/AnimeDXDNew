@@ -1,6 +1,7 @@
 package com.animedxd;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,8 +37,17 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.ViewHolder> 
         android.util.Log.d("DEBUG_AnimeAdapter", "onBindViewHolder: " + anime.title);
         holder.txtTitle.setText(anime.title);
         holder.txtGenre.setText("Genre: " + anime.genre);
-        holder.txtDesc.setText(anime.description);
+        holder.txtDesc.setText(anime.shortDesc);
         holder.imgAnime.setImageResource(anime.imageResId);
+
+
+
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, DetailPage.class);
+            intent.putExtra("anime_id", anime.getId());  // ✅ Kirim ID anime
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -51,7 +61,7 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgAnime = itemView.findViewById(R.id.imgAnimeitem);
+            imgAnime = itemView.findViewById(R.id.animeImage);
             txtTitle = itemView.findViewById(R.id.txtTitleitem);
             txtGenre = itemView.findViewById(R.id.txtGenreitem);
             txtDesc = itemView.findViewById(R.id.txtDescitem);

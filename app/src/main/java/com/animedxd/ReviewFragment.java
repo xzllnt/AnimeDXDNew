@@ -34,6 +34,9 @@ public class ReviewFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private int animeId; // tambah ini
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,30 +62,27 @@ public class ReviewFragment extends Fragment {
         }
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ReviewFragment.
-     */
     // TODO: Rename and change types and number of parameters
-    public static ReviewFragment newInstance(String param1, String param2) {
+    public static ReviewFragment newInstance(int animeId) {
         ReviewFragment fragment = new ReviewFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt("anime_id", animeId);
         fragment.setArguments(args);
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            animeId = getArguments().getInt("anime_id", -1); // ambil animeId
+        }
+
+        // Optional: validasi animeId
+        if (animeId == -1) {
+            Toast.makeText(getContext(), "Anime ID tidak ditemukan", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -99,15 +99,25 @@ public class ReviewFragment extends Fragment {
         reviewRecyclerView = view.findViewById(R.id.reviewRecyclerView);
         reviewRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Dummy data
+        // 1. Ambil anime berdasarkan ID
+        Anime anime = AnimeData.getAnimeById(animeId);
         reviewList = new ArrayList<>();
-        reviewList.add(new ReviewItem(R.drawable.logo, "Shean", 4.5f, "Lorem ipsum dolor sit amet, consectetur adipiscing"));
-        reviewList.add(new ReviewItem(R.drawable.logo, "Excel", 3.0f, "Lorem ipsum dolor sit amet, consectetur adipiscing"));
-        reviewList.add(new ReviewItem(R.drawable.logo, "Eric", 5.0f, "Lorem ipsum dolor sit amet, consectetur adipiscing"));
-        reviewList.add(new ReviewItem(R.drawable.logo, "Yehuda", 4.0f, "Lorem ipsum dolor sit amet, consectetur adipiscing"));
 
+        if (anime != null && anime.reviews != null) {
+            for (Anime.Review r : anime.reviews) {
+                reviewList.add(new ReviewItem(
+                        R.drawable.logo, // bisa kamu ganti sesuai image profile user
+                        r.name,
+                        (float) r.rating,
+                        r.testimoni
+                ));
+            }
+        }
+
+// 2. Pasang adapter
         reviewAdapter = new ReviewAdapter(reviewList);
         reviewRecyclerView.setAdapter(reviewAdapter);
+
 
         Button btnPostReview = view.findViewById(R.id.btnPostReview);
         btnPostReview.setOnClickListener(v -> {

@@ -70,7 +70,7 @@ public class AboutFragment extends Fragment {
 
         // Temukan ImageView dan ubah warnanya
         ImageView imageView = view.findViewById(R.id.imageView4);
-        imageView.setColorFilter(Color.parseColor("#292929"));
+        imageView.setColorFilter(Color.parseColor("#000000"));
 
         ImageView backgroundImage = view.findViewById(R.id.background);
         backgroundImage.setColorFilter(Color.parseColor("#F2F1F2"));
