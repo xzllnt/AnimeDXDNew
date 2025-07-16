@@ -245,11 +245,11 @@ public class AnimeData {
                 "Kimi no Na wa",
                 "Genre: Drama, Supernatural, Romance",
                 "Dua remaja bertukar tubuh lintas ruang dan waktu, mengubah takdir satu sama lain.",
-                "Mitsuha Miyamizu adalah seorang siswi SMA di desa Itomori yang bosan dengan kehidupan pedesaannya dan berharap bisa hidup sebagai pria tampan di Tokyo. Taki Tachibana adalah siswa SMA di Tokyo yang menjalani kehidupan sibuk sebagai pelayan paruh waktu. Suatu hari, keduanya mulai mengalami fenomena aneh — mereka saling bertukar tubuh dalam tidur mereka.\\n\" +\n" +
-                        "\"\\n\" +\n" +
-                        "\"Melalui pesan yang ditinggalkan satu sama lain, mereka mulai membentuk hubungan unik dan akrab, meski belum pernah bertemu langsung. Namun, suatu hari fenomena itu berhenti, dan Taki menyadari ada lebih dari sekadar pertukaran tubuh — ternyata mereka hidup dalam waktu yang berbeda, dan Mitsuha berada dalam bahaya besar.\\n\" +\n" +
-                        "\"\\n\" +\n" +
-                        "\"Kimi no Na wa. adalah film yang menggabungkan romansa, drama, dan elemen supernatural dalam balutan visual menawan dan musik emosional dari RADWIMPS. Anime ini menggugah perasaan dengan kisah tentang koneksi manusia, takdir, dan harapan yang melampaui waktu.",
+                "Mitsuha Miyamizu adalah seorang siswi SMA di desa Itomori yang bosan dengan kehidupan pedesaannya dan berharap bisa hidup sebagai pria tampan di Tokyo. Taki Tachibana adalah siswa SMA di Tokyo yang menjalani kehidupan sibuk sebagai pelayan paruh waktu. Suatu hari, keduanya mulai mengalami fenomena aneh — mereka saling bertukar tubuh dalam tidur mereka.\n" +
+                        "\n" +
+                        "Melalui pesan yang ditinggalkan satu sama lain, mereka mulai membentuk hubungan unik dan akrab, meski belum pernah bertemu langsung. Namun, suatu hari fenomena itu berhenti, dan Taki menyadari ada lebih dari sekadar pertukaran tubuh — ternyata mereka hidup dalam waktu yang berbeda, dan Mitsuha berada dalam bahaya besar.\n" +
+                        "\n" +
+                        "Kimi no Na wa. adalah film yang menggabungkan romansa, drama, dan elemen supernatural dalam balutan visual menawan dan musik emosional dari RADWIMPS. Anime ini menggugah perasaan dengan kisah tentang koneksi manusia, takdir, dan harapan yang melampaui waktu.",
                 2016,
                 "Summer",
                 1,
