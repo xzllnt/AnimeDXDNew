@@ -24,19 +24,20 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_review, parent, false);
+                .inflate(R.layout.item_review, parent, false);  // Pastikan item_review.xml sesuai
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ReviewItem item = reviewList.get(position);
-        holder.imgReviewer.setImageResource(item.getImageResId());
-        holder.txtName.setText(item.getName());
-        holder.ratingBar.setRating(item.getRating());
-        holder.txtRating.setText(item.getRating() + "");
-        holder.txtReview.setText(item.getReviewText());
-    }   
+
+        holder.imgReviewer.setImageResource(item.profileImageResId);       // Gambar profil
+        holder.txtName.setText(item.reviewerName);                         // ✅ Ganti jadi reviewerName
+        holder.ratingBar.setRating(item.rating);                           // Bintang rating
+        holder.txtRating.setText(String.format("%.1f", item.rating));      // Angka rating
+        holder.txtReview.setText(item.reviewText);                         // Isi review
+    }
 
     @Override
     public int getItemCount() {
@@ -46,16 +47,15 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgReviewer;
         TextView txtName, txtRating, txtReview;
-
         RatingBar ratingBar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgReviewer = itemView.findViewById(R.id.imgReviewer);
             txtName = itemView.findViewById(R.id.txtName);
-            ratingBar = itemView.findViewById(R.id.ratingBar);
             txtRating = itemView.findViewById(R.id.txtRating);
             txtReview = itemView.findViewById(R.id.txtReview);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
         }
     }
 }

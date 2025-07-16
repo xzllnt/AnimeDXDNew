@@ -1,58 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/txtSynopsis"
-        android:layout_width="338dp"
-        android:layout_height="159dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="36dp"
-        android:fontFamily="@font/patrick_hand"
-        android:justificationMode="inter_word"
-        android:text="Meskipun menjadi wadah bagi roh jahat, Yuuji masih bisa mengendalikan tubuhnya. Hal ini menarik perhatian para penyihir Jujutsu—kelompok khusus yang bertugas membasmi roh-roh kutukan. Di bawah bimbingan penyihir kuat Satoru Gojo, Yuuji diterima masuk ke SMA Jujutsu Tokyo, tempat para penyihir dilatih.
+        <TextView
+            android:id="@+id/txtSynopsis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/patrick_hand"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:justificationMode="inter_word"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-
-
-Bersama teman-teman barunya, Fushiguro Megumi dan Kugisaki Nobara, Yuuji menghadapi berbagai misi berbahaya dan rahasia kelam dunia kutukan. Pertarungan antara manusia dan kutukan pun dimulai, mempertaruhkan nyawa dan prinsip kemanusiaan demi menjaga keseimbangan dunia."
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtSynopsis1"
-        android:layout_width="341dp"
-        android:layout_height="97dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/patrick_hand"
-        android:justificationMode="inter_word"
-        android:text="Yuuji Itadori adalah seorang siswa SMA yang hidupnya berubah drastis setelah menemukan sebuah benda kutukan—jari Sukuna Ryoumen, makhluk kutukan legendaris paling berbahaya. Demi menyelamatkan teman-temannya dari serangan kutukan, Yuuji nekat menelan jari tersebut dan menjadi inang Sukuna."
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtSynopsis2"
-        android:layout_width="341dp"
-        android:layout_height="97dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/patrick_hand"
-        android:justificationMode="inter_word"
-        android:text="Bersama teman-teman barunya, Fushiguro Megumi dan Kugisaki Nobara, Yuuji menghadapi berbagai misi berbahaya dan rahasia kelam dunia kutukan. Pertarungan antara manusia dan kutukan pun dimulai, mempertaruhkan nyawa dan prinsip kemanusiaan demi menjaga keseimbangan dunia."
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

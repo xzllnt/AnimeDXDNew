@@ -1,33 +1,15 @@
 package com.animedxd;
 
 public class ReviewItem {
-    private int imageResId;
-    private String name;
-    private float rating;
-    private String reviewText;
+    public int profileImageResId;
+    public String reviewerName;
+    public float rating;
+    public String reviewText;
 
-    // Constructor
-    public ReviewItem(int imageResId, String name, float rating, String reviewText) {
-        this.imageResId = imageResId;
-        this.name = name;
+    public ReviewItem(int profileImageResId, String reviewerName, float rating, String reviewText) {
+        this.profileImageResId = profileImageResId;
+        this.reviewerName = reviewerName;
         this.rating = rating;
         this.reviewText = reviewText;
-    }
-
-    // Getters
-    public int getImageResId() {
-        return imageResId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public float getRating() {
-        return rating;
-    }
-
-    public String getReviewText() {
-        return reviewText;
     }
 }
