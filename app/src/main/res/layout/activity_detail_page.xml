@@ -75,7 +75,7 @@
         android:layout_marginStart="170dp"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/patrick_hand"
-        android:text="Jujutsu Kaisen"
+        android:text="Title"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/imageView12"
@@ -211,9 +211,7 @@
         app:tabMode="fixed"
         app:tabSelectedTextColor="@android:color/white"
         app:tabTextAppearance="@style/CustomTabText"
-        app:tabTextColor="@android:color/white"
-
-        />
+        app:tabTextColor="@android:color/white" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
@@ -224,7 +222,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
-
     </androidx.viewpager2.widget.ViewPager2>
 
 

@@ -29,7 +29,6 @@
         app:layout_constraintEnd_toStartOf="@+id/nav_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
     </FrameLayout>
 
     <!-- LIST icon -->
@@ -42,7 +41,6 @@
         app:layout_constraintEnd_toStartOf="@+id/nav_about"
         app:layout_constraintStart_toEndOf="@id/nav_home"
         app:layout_constraintTop_toTopOf="parent">
-
     </FrameLayout>
 
     <!-- ABOUT icon -->
@@ -54,7 +52,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
     </FrameLayout>
 
 
