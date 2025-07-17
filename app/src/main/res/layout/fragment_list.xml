@@ -33,7 +33,6 @@
             android:textSize="20dp"
             android:textStyle="italic|bold"
             android:fontFamily="@font/poppins_bold"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.104"
             app:layout_constraintStart_toStartOf="parent"
@@ -154,13 +153,11 @@
                 android:id="@+id/recyclerFavorite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
                 android:paddingBottom="16dp"
                 android:layout_marginBottom="20dp"
-                android:padding="16dp"
-                />
+                android:padding="16dp" />
         </LinearLayout>
     </ScrollView>
 

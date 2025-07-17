@@ -40,9 +40,6 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.ViewHolder> 
         holder.txtDesc.setText(anime.shortDesc);
         holder.imgAnime.setImageResource(anime.imageResId);
 
-
-
-
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailPage.class);
             intent.putExtra("anime_id", anime.getId());  // ✅ Kirim ID anime

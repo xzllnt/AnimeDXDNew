@@ -198,9 +198,9 @@
         android:id="@+id/imageView7"
         android:layout_width="48dp"
         android:layout_height="50dp"
+        android:src="@drawable/call"
         android:layout_marginTop="428dp"
         android:layout_marginEnd="132dp"
-        android:src="@drawable/call"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -208,9 +208,9 @@
         android:id="@+id/imageView6"
         android:layout_width="48dp"
         android:layout_height="50dp"
+        android:src="@drawable/instagram"
         android:layout_marginTop="396dp"
         android:layout_marginEnd="132dp"
-        android:src="@drawable/instagram"
         app:layout_constraintEnd_toEndOf="@+id/background"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -218,9 +218,9 @@
         android:id="@+id/imageView8"
         android:layout_width="48dp"
         android:layout_height="50dp"
+        android:src="@drawable/email"
         android:layout_marginTop="460dp"
         android:layout_marginEnd="132dp"
-        android:src="@drawable/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -228,10 +228,10 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="\@animedxd"
         android:layout_marginStart="3dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/comic_neue_bold"
-        android:text="\@animedxd"
         android:textColor="#2A6F7F"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
@@ -240,10 +240,10 @@
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
+        android:text="anime_dxd@gmail.com"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/comic_neue_bold"
-        android:text="anime_dxd@gmail.com"
         android:textColor="#2A6F7F"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
@@ -314,8 +314,7 @@
                 android:background="@drawable/member_bg"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="8dp"
-                >
+                android:padding="8dp">
 
                 <ImageView
                     android:layout_width="72dp"

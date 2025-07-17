@@ -45,7 +45,7 @@ public class SynopsisFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ✅ Ambil animeId dari Bundle
+        // Ambil animeId dari Bundle
         if (getArguments() != null) {
             animeId = getArguments().getInt("anime_id", -1);
             anime = AnimeData.getAnimeById(animeId);

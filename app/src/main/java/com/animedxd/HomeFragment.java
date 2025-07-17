@@ -116,14 +116,6 @@ public class HomeFragment extends Fragment {
     private void setupNewsTab() {
         tabContent.removeAllViews();
         sliderHandler.removeCallbacks(sliderRunnable);
-
-//        LayoutInflater inflater = LayoutInflater.from(requireContext());
-//        View newsLayout = inflater.inflate(R.layout.item_news, tabContent, false);
-//
-//        ImageView bannerImage = newsLayout.findViewById(R.id.bannerImage);
-//        bannerImage.setImageResource(newsImages.get(0));
-//
-//        tabContent.addView(newsLayout);
     }
 
     private void setupMangaTab() {
